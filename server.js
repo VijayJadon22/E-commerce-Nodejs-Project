@@ -54,6 +54,11 @@ server.use((err, req, res, next) => {
     return res.status(500).send("Could not process the request, Please try again!");
 });
 
+// added new path for deploy
+server.get("/", () => {
+    res.send("Welcome to E commerce");
+})
+
 
 
 // if no path present then this will be displayed 

@@ -355,3 +355,5 @@
 /api/users/signin - POST - {"email":"xyz@gmail.com","password":"true"} - 1731755520436
 /api/products - POST - {} - 1731755654062
 /api/products - POST - {} - 1731755799145
+/api/products - GET - {} - 1733847120353
+/api/products - GET - {} - 1733847120607
