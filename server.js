@@ -55,7 +55,7 @@ server.use((err, req, res, next) => {
 });
 
 // added new path for deploy
-server.get("/", () => {
+server.get("/", (req, res) => {
     res.send("Welcome to E commerce");
 })
 
