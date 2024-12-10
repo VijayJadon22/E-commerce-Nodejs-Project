@@ -17,6 +17,8 @@ import apiDocs from './swagger.json' assert {type: "json"};
 import { ApplicationError } from './src/error-handler/applicationError.js';
 import { ConnectToMongoDB } from './src/config/mongodb.js';
 import orderRouter from './src/features/order/order.route.js';
+import { connectWithMongoose } from './src/config/mongooseConfig.js';
+import likeRouter from './src/features/like/like.route.js';
 
 const PORT = 7200;
 
@@ -41,6 +43,7 @@ server.use('/api/products', jwtAuth, productRouter);
 server.use('/api/users', userRouter);
 server.use('/api/cartItems', jwtAuth, cartRouter);
 server.use('/api/order', jwtAuth, orderRouter);
+server.use('/api/like', jwtAuth, likeRouter);
 
 /* Error handler middleware:- handeling genric errors*/
 server.use((err, req, res, next) => {
@@ -58,5 +61,6 @@ server.use((req, res) => {
 
 server.listen(PORT, () => {
     console.log(`Server stared at Port:${PORT}`);
-    ConnectToMongoDB();
+    // ConnectToMongoDB();
+    connectWithMongoose();
 });

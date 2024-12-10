@@ -4,7 +4,7 @@ import { OrderController } from './order.controller.js';
 const orderRouter = express.Router();
 const orderController = new OrderController();
 
-orderRouter.get('/', orderController.placeOrder);
+orderRouter.post('/', orderController.placeOrder);
 
 
 

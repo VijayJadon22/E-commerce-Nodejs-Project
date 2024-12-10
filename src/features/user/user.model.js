@@ -29,14 +29,14 @@ var users = [
     {
         id: 2,
         name: "Ajay Jadon",
-        email: "abz@gmail.com",
+        email: "abc@gmail.com",
         password: 1234,
         type: "seller",
     },
     {
         id: 3,
         name: "Swati Jadon",
-        email: "abz@gmail.com",
+        email: "abd@gmail.com",
         password: 1234,
         type: "seller",
     },

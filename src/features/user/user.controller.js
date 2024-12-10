@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 const saltRounds = 12; /*number should be between 10-20, bigger the number the more complex password and will take more time to hash it*/
 
 import { UserModel } from "./user.model.js";
-import { UserRepository } from "./user.repository.js";
+import { UserRepository } from './user.repository.js';
 import { ApplicationError } from "../../error-handler/applicationError.js";
 
 export class UserController {
@@ -26,7 +26,8 @@ export class UserController {
         try {
             const { email, password } = req.body;
             // const user = await UserRepository.signIn(email, password, next);
-            const user = await UserRepository.findByEmail(email, next);
+            const user = await UserRepository.findByEmail(email);
+            
             if (!user) {
                 return res.status(400).send("Invalid creds");
             }
@@ -44,6 +45,22 @@ export class UserController {
             } else {
                 return res.status(400).send("Invalid creds");
             }
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async changePassword(req, res, next) {
+        try {
+            const userId = req.userId;
+            const newPass = req.body.newPass;
+            const hashedPassword = await bcrypt.hash(newPass, saltRounds);
+
+            const result = await UserRepository.changePass(userId, hashedPassword);
+            if (!result) {
+                return res.status(400).send("Password not updated!");
+            }
+            return res.status(200).send("Password updated successfuly!");
         } catch (error) {
             next(error);
         }

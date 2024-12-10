@@ -1,44 +1,44 @@
-import { getDB } from "../../config/mongodb.js";
+import mongoose from "mongoose";
+import { userSchema } from "./user.schema.js";
+import { ObjectId } from "mongodb";
 import { ApplicationError } from "../../error-handler/applicationError.js";
 
-export class UserRepository {
-    static async signUp(user, next) {
-        try {
-            // get the database
-            const db = getDB();
-            // get the collection
-            let userCollection = db.collection('users');
+const userModel = mongoose.model('users', userSchema);
 
-            const userPresent = await userCollection.findOne(user);
-            if (userPresent) {
-                return res.status(400).send("User already resistered");
-            }
-            // insert the document in DB
-            await userCollection.insertOne(user);
-            console.log(user);
+export class UserRepository {
+    static async signUp(newUser) {
+        try {
+            const user = new userModel(newUser);
+            await user.save();
             return user;
         } catch (error) {
-            next(error);
+            console.error(error);
+            throw error;
         }
     }
 
-    static async signIn(email, password, next) {
+    static async findByEmail(email) {
         try {
-            const db = getDB();
-            const userCollection = db.collection('users');
-            return await userCollection.findOne({ email, password });
+            return await userModel.findOne({ email });
         } catch (error) {
-            next(error);
+            console.error(error);
+            throw error;
         }
     }
 
-    static async findByEmail(email, next) {
+    static async changePass(userId, newPass) {
         try {
-            const db = getDB();
-            const userCollection = db.collection('users');
-            return await userCollection.findOne({ email});
+            let user = await userModel.findById(userId);
+            if (user) {
+                user.password = newPass;
+                await user.save();
+                return "password updated";
+            } else {
+                throw new Error("User not found");
+            }
         } catch (error) {
-            next(error);
+            console.error(error);
+            throw error;
         }
     }
 }

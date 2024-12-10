@@ -9,11 +9,11 @@ export class CartItemsRepository {
             const db = getDB();
             const cartCollection = db.collection('cart');
 
-            const id = await this.getCounter(db);
+            // const id = await this.getCounter(db);
 
             const filter = { userId: new ObjectId(userId), productId: new ObjectId(productId) };
             const update = {
-                $setOnInsert: { _id: id },
+                // $setOnInsert: { _id: id },
                 $inc: { quantity: quantity }
             };
             const options = { upsert: true };

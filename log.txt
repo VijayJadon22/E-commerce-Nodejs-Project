@@ -252,3 +252,106 @@
 /api/order/ - GET - {} - 1730990486152
 /api/order/ - GET - {} - 1730990560197
 /api/order/ - GET - {} - 1730990572650
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731150777419
+/api/products/average - GET - {} - 1731150789633
+/api/products/averageRating - GET - {} - 1731150880258
+/api/products/averageRating - GET - {} - 1731151077685
+/api/order/ - POST - {} - 1731151687275
+/api/order/ - POST - {} - 1731151989954
+/api/order/ - POST - {} - 1731154265596
+/api/order/ - POST - {} - 1731154328865
+/api/order/ - POST - {} - 1731154562515
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731154569772
+/api/order/ - POST - {} - 1731154578089
+/api/products/rate?productId=2&rating=2 - POST - {} - 1731154631994
+/api/cartItems?productId=3&quantity=8 - POST - {} - 1731154643401
+/api/cartItems?productId=3&quantity=8 - POST - {} - 1731154675878
+/api/cartItems?productId=3&quantity=8 - POST - {} - 1731154769128
+/api/order/ - POST - {} - 1731154801796
+/api/cartItems?productId=3&quantity=8 - POST - {} - 1731155599451
+/api/order/ - POST - {} - 1731155610068
+/api/cartItems?productId=3&quantity=8 - POST - {} - 1731155809046
+/api/order/ - POST - {} - 1731155818770
+/api/cartItems?productId=3&quantity=8 - POST - {} - 1731155992116
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731160766600
+/api/users/signup - POST - {"name":"Vijay Jadon","email":"qwe@gmail.com","password":"abcde","type":"seller"} - 1731160815066
+/api/users/signup - POST - {"name":"Vijay Jadon","email":"qwe@gmail.com","password":"abcde","type":"seller"} - 1731160849461
+/api/users/signup - POST - {"name":"avi Jadon","email":"qwe@gmail.com","password":"abcde","type":"seller"} - 1731160867361
+/api/users/signup - POST - {"name":"ai Jadon","email":"qwe@gmail.com","password":"abcde","type":"Seller"} - 1731160909543
+/api/users/signup - POST - {"name":"avi Jadon","email":"qwe@gmail.com","password":"abcde","type":"seller"} - 1731160936905
+/api/users/signup - POST - {"name":"avi Jadon","email":"qwe@gmail.com","password":"abcde","type":"seller"} - 1731160976286
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731161667300
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161678186
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161698804
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161729400
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161746754
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161830850
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161869754
+/api/users/changePassword - POST - {"newPass":"hello"} - 1731161949277
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731162091508
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"hello"} - 1731162106627
+/api/users/changePassword - POST - {"newPass":"abcde"} - 1731162124885
+/api/users/changePassword - POST - {"newPass":"abcde"} - 1731162457828
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"hello"} - 1731301837270
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"1234"} - 1731301878569
+/api/users/signin - POST - {"email":"abz@gmail.com","password":1234} - 1731301884820
+/api/users/signin - POST - {"email":"abz@gmail.com","password":1234} - 1731301920410
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"1234"} - 1731301932528
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"1234"} - 1731301983391
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"1234"} - 1731302047353
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"1234"} - 1731302077666
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"1234"} - 1731302111511
+/api/users/signup - POST - {"name":"avi Jadon","email":"qwe@gmail.com","password":"abcde","type":"seller"} - 1731302172195
+/api/users/signup - POST - {"name":"avi Jadon","email":"wwe@gmail.com","password":"abcde","type":"seller"} - 1731302193193
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"abcde"} - 1731302211357
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731302283058
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731302286847
+/api/cartItems?productId=671cd6d71002db397eadb535&quantity=8 - POST - {} - 1731302297754
+/api/cartItems?productId=671cd6d71002db397eadb535&quantity=8 - POST - {} - 1731302379140
+/api/cartItems?productId=671cd6d71002db397eadb535&quantity=8 - POST - {} - 1731302446873
+/api/cartItems?productId=671cd6d71002db397eadb535&quantity=8 - POST - {} - 1731302464338
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731323800880
+/api/users/changePassword - PUT - {"newPass":"12345"} - 1731323842434
+/api/users/changePassword - PUT - {"newPass":"12345"} - 1731323858164
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"abcde"} - 1731323912560
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731323917983
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731323951255
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731394168298
+/api/products/rate?productId=671cd7b61002db397eadb536&rating=4 - POST - {} - 1731394182852
+/api/products/rate?productId=671cd7b61002db397eadb536&rating=4 - POST - {} - 1731394240926
+/api/products/rate?productId=671cd7b61002db397eadb536&rating=3 - POST - {} - 1731394316187
+/api/products/rate?productId=671cd7b61002db397eadb536&rating=2 - POST - {} - 1731394375355
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731421216052
+/api/products - POST - {} - 1731421228640
+/api/products - POST - {} - 1731421986190
+/api/products - POST - {} - 1731422000133
+/api/products - POST - {} - 1731422106616
+/api/products - POST - {} - 1731422852397
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731582044440
+/api/like - POST - {"id":"67336a848768b67350ba2061","types":"products"} - 1731582382759
+/api/like - POST - {"id":"67336a848768b67350ba2061","types":"products"} - 1731582413125
+/api/like - POST - {"id":"67336a848768b67350ba2061","types":"products"} - 1731582433860
+/api/like - POST - {"id":"673341f00737d978adc9989c","types":"categories"} - 1731582506498
+/api/like - POST - {"id":"673341f00737d978adc9989c","type":"categories"} - 1731582527739
+/api/like - POST - {"id":"673341f00737d978adc9989c","type":"categorie"} - 1731582586611
+/api/like - POST - {"id":"673341f00737d978adc9989b","type":"categories"} - 1731584598588
+/api/like - POST - {"id":"673341f00737d978adc9989b","type":"categories"} - 1731588496869
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731597155697
+/api/users/signup - POST - {"name":"avi Jadon","email":"wwe@gmail.com","password":"abcde","type":"seller"} - 1731597162485
+/api/users/signin - POST - {"email":"abz@gmail.com","password":"12345"} - 1731597192461
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"12345"} - 1731597212878
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"1234"} - 1731597217197
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"abcde"} - 1731597223372
+/api/cartItems/ - GET - {} - 1731597248930
+/api/products - POST - {} - 1731597283027
+/api/like - POST - {"id":"673613e3a928db6aa556b0fc","type":"products"} - 1731597358958
+/api/users/signup - POST - {"name":"xyz Jadon","email":"xyz@gmail.com","password":"true","type":"seller"} - 1731755180935
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"abcde"} - 1731755292670
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"abcde"} - 1731755353101
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"abcde"} - 1731755415741
+/api/users/signin - POST - {"email":"wwe@gmail.com","password":"abcde"} - 1731755435171
+/api/users/signup - POST - {"name":"xyz Jadon","email":"xyz@gmail.com","password":"true","type":"seller"} - 1731755442681
+/api/users/signup - POST - {"name":"xyz Jadon","email":"xyz@gmail.com","password":"true","type":"seller"} - 1731755487323
+/api/users/signin - POST - {"email":"xyz@gmail.com","password":"true"} - 1731755520436
+/api/products - POST - {} - 1731755654062
+/api/products - POST - {} - 1731755799145

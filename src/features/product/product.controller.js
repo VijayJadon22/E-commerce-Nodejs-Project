@@ -14,7 +14,7 @@ export class ProductController {
 
     async addProduct(req, res, next) {
         try {
-            let { name, desc, price, category, sizes } = req.body;
+            let { name, desc, price, sizes, stock, categories } = req.body;
             if (!req.file) {
                 throw new ApplicationError("File not uploaded", 400);
             }
@@ -22,9 +22,11 @@ export class ProductController {
             const imagePath = 'uploads/' + req.file.filename;
             sizes = sizes.split(',');
             price = parseFloat(price);
+            stock = Number(stock);
+            categories = categories.split(",");
 
             // const newProduct = new ProductModel(name, desc, price, imagePath, category, sizes);
-            const productAdded = await ProductRepository.addNewproduct(name, desc, price, imagePath, category, sizes, next);
+            const productAdded = await ProductRepository.addNewproduct(name, desc, price, imagePath, sizes, stock, categories);
 
             if (!productAdded) {
                 return res.status(400).send( "Product not added");
@@ -72,7 +74,7 @@ export class ProductController {
             console.log('Received request to rate product');
             const userId = req.userId;
             const { productId, rating } = req.query;
-            const productRated = await ProductRepository.rateProduct(userId, Number(productId), Number(rating));
+            const productRated = await ProductRepository.rateProduct(userId, productId, Number(rating));
     
             if (!productRated) {
                 console.log('Rating could not be added');
@@ -80,7 +82,7 @@ export class ProductController {
             }
     
             console.log('Rating added successfully');
-            return res.status(200).send("Rating added successfully");
+            return res.status(200).send(productRated);
         } catch (error) {
             console.error('Error in rateProduct controller:', error);
             next(error);

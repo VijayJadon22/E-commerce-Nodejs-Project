@@ -1,5 +1,15 @@
 import { ObjectId, ReturnDocument } from "mongodb";
 import { getDB } from "../../config/mongodb.js";
+import { productSchema } from "./product.schema.js";
+import mongoose from "mongoose";
+import { reviewSchema } from "./review.schema.js";
+import { ApplicationError } from "../../error-handler/applicationError.js";
+import { categorySchema } from "./category.schema.js";
+
+const productModel = mongoose.model('products', productSchema);
+const reviewModel = mongoose.model('reviews', reviewSchema);
+const categoryModel = mongoose.model('categories', categorySchema);
+
 
 export class ProductRepository {
     // get all products
@@ -17,21 +27,55 @@ export class ProductRepository {
     }
 
     // add new product
-    static async addNewproduct(name, desc, price, imagePath, category, sizes, next) {
+    static async addNewproduct(name, desc, price, imagePath, sizes, stock, categories) {
+
+        // const session = await mongoose.startSession();
+        // session.startTransaction();
         try {
-            const db = getDB();
-            const productCollection = db.collection('products');
+            const newProduct = new productModel({
+                name,
+                desc,
+                price,
+                imageUrl: imagePath,
+                sizes,
+                stock,
+                categories
+            });
+            // Save the new product
+            await newProduct.save();
 
-            // getCounter for id
-            const id = await this.getCounter(db);
+            // Update each category with the new product ID
+            await categoryModel.updateMany(
+                { _id: { $in: categories } }, //filter
+                { $push: { products: newProduct._id } }, //update
+            )
 
-            const result = await productCollection.insertOne({ _id: id, name, desc, price, imagePath, category, sizes });
-            console.log(result.insertedId);
-            return result.insertedId;
+            // await session.commitTransaction();
+            // session.endSession();
+
+            return newProduct;
+
+            /*
+        const db = getDB();
+        const productCollection = db.collection('products');
+
+        // getCounter for id
+        const id = await this.getCounter(db);
+
+        const result = await productCollection.insertOne({ name, desc, price, imagePath, category, sizes, stock });
+
+
+        console.log(result.insertedId);
+        return result.insertedId; 
+        */
+
         } catch (error) {
-            next(error);
+            console.error(error);
+            throw error;
         }
     }
+
+
 
     // getbyid
     static async findById(id) {
@@ -105,20 +149,39 @@ export class ProductRepository {
 
     static async rateProduct(userId, productId, rating) {
         try {
-            const db = getDB();
-            const productCollection = db.collection('products');
 
-            await productCollection.updateOne(
-                { _id: productId },
-                { $pull: { ratings: { userId: new ObjectId(userId) } } }
-            );
+            const product = await productModel.findById(productId);
+            if (!product) {
+                throw new ApplicationError("Product not found", 400);
+            }
 
-            const result = await productCollection.updateOne(
-                { _id: productId },
-                { $push: { ratings: { userId: new ObjectId(userId), rating } } }
-            );
+            const productRated = await reviewModel.findOne({ productId: productId, userId: userId });
+            if (productRated) {
+                productRated.rating = rating;
+                await productRated.save();
+                return "Rating updated!";
+            } else {
+                const newReview = new reviewModel({ productId, userId, rating });
+                await newReview.save();
+                return "Rating added!";
 
-            return result.modifiedCount > 0;
+            }
+
+
+            // const db = getDB();
+            // const productCollection = db.collection('products');
+
+            // await productCollection.updateOne(
+            //     { _id: productId },
+            //     { $pull: { ratings: { userId: new ObjectId(userId) } } }
+            // );
+
+            // const result = await productCollection.updateOne(
+            //     { _id: productId },
+            //     { $push: { ratings: { userId: new ObjectId(userId), rating } } }
+            // );
+
+            // return result.modifiedCount > 0;
         } catch (error) {
             console.error('Error in rateProduct:', error);
             throw error;
