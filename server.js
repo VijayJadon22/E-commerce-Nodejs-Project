@@ -19,6 +19,7 @@ import { ConnectToMongoDB } from './src/config/mongodb.js';
 import orderRouter from './src/features/order/order.route.js';
 import { connectWithMongoose } from './src/config/mongooseConfig.js';
 import likeRouter from './src/features/like/like.route.js';
+import path from "path";
 
 const PORT = 7200;
 
@@ -53,6 +54,13 @@ server.use((err, req, res, next) => {
     }
     return res.status(500).send("Could not process the request, Please try again!");
 });
+
+
+
+server.get('/', (req, res) => {
+    res.sendFile(path.join(path.resolve(), 'index.html'));
+});
+
 
 // if no path present then this will be displayed 
 server.use((req, res) => {
