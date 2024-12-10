@@ -55,12 +55,11 @@ server.use((err, req, res, next) => {
 });
 
 // if no path present then this will be displayed 
-// server.use((req, res) => {
-//     return res.send("Page not found! please check the API");
-// });
+server.use((req, res) => {
+    return res.send("Page not found! please check the API");
+});
 
 server.listen(PORT, () => {
     console.log(`Server stared at Port:${PORT}`);
-    // ConnectToMongoDB();
     connectWithMongoose();
 });
